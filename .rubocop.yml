@@ -1,0 +1,4 @@
+# Follow the GitHub Ruby styleguide (https://github.com/styleguide/ruby).
+# Use Ruby 1.9 syntax and not hashrocket syntax for Hash literals.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
