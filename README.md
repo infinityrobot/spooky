@@ -42,7 +42,7 @@ Spooky::Client.new(subdomain: "subdomain", client_id: "id", client_secret: "secr
 Spooky also has ENV variable support out of the box. You can set your credentials by setting the below ENV variables:
 
 Attribute     | ENV variable         
-:-----------: | :--------------------
+:------------ | :--------------------
 subdomain     | `GHOST_SUBDOMAIN`    
 client_id     | `GHOST_CLIENT_ID`    
 client_secret | `GHOST_CLIENT_SECRET`
@@ -68,7 +68,7 @@ Say we have already initialized a Ghost client using ENV variables as:
 We can then access collections of various resources by calling the below methods:
 
 Collection | Method   | Example         | Example with options          | Result
-:--------: | :------: | :-------------: | :---------------------------: | :------------------------------
+:--------- | :------- | :-------------- | :---------------------------- | :------------------------------
 posts      | `#posts` | `@spooky.posts` | `@spooky.posts(limit: "all")` | Array of `Spooky::Post` objects
 tags       | `#tags`  | `@spooky.tags`  | `@spooky.tags(page: 2)`       | Array of `Spooky::Tag` objects
 users      | `#users` | `@spooky.users` | `@spooky.users(order: "asc")` | Array of `Spooky::User` objects
@@ -80,7 +80,7 @@ Spooky provides a number of utility methods to also fetch individual collection 
 The table below summarises all of the available individual member fetch methods with the attributes available on those member objects assuming we have initialized a Ghost client as above.
 
 Type | Spooky Object  | Fetch by ID              | Fetch by slug                | Result
-:--: | :------------: | :----------------------: | :--------------------------: | :--------------------
+:--- | :------------- | :----------------------- | :--------------------------- | :--------------------
 Post | `Spooky::Post` | `@spooky.post_by_id(id)` | `@spooky.post_by_slug(slug)` | `Spooky::Post` object
 Tag  | `Spooky::Tag`  | `@spooky.tag_by_id(id)`  | `@spooky.tag_by_slug(slug)`  | `Spooky::Tag` object
 User | `Spooky::User` | `@spooky.user_by_id(id)` | `@spooky.user_by_slug(slug)` | `Spooky::User` object
