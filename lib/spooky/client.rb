@@ -26,9 +26,43 @@ module Spooky
       HTTParty.get(url).parsed_response
     end
 
+    def fetch(resource, options = {})
+      resource_type = resource.to_s.match(/^(\w+)/)[0]
+      response = fetch_json(resource, options)[resource_type]
+      object = "Spooky::#{resource_type.classify}".constantize
+      if response
+        array = response.map { |o| object.send(:new, o) }
+        options[:id] ? array.reduce : array
+      end
+    end
+
+    def fetch_with_associations(resource, options = {})
+      options["include"] = "author, tags, count.posts"
+      fetch(resource, options)
+    end
+
     # Utilities.
     def pages(resource, options = {})
       fetch_json(resource, options)["meta"]["pagination"]["pages"]
+    end
+
+    # Client level object collection methods.
+    [:posts, :tags, :users].each do |object|
+      define_method(object) do |options = {}|
+        fetch_with_associations(object, options)
+      end
+
+      define_method("#{object.to_s.singularize}_pages") do |options = {}|
+        pages(object, options)
+      end
+
+      define_method("find_#{object.to_s.singularize}_by_id") do |id|
+        fetch_with_associations(object, id: id)
+      end
+
+      define_method("find_#{object.to_s.singularize}_by_slug") do |slug|
+        fetch_with_associations("#{object}/slug", id: slug)
+      end
     end
 
     private
