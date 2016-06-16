@@ -37,7 +37,7 @@ module Spooky
     end
 
     def fetch_with_associations(resource, options = {})
-      options["include"] = "author, tags, count.posts"
+      options[:include] = "author,tags,count.posts"
       fetch(resource, options)
     end
 
