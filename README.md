@@ -79,11 +79,11 @@ Spooky provides a number of utility methods to also fetch individual collection 
 
 The table below summarises all of the available individual member fetch methods with the attributes available on those member objects assuming we have initialized a Ghost client as above.
 
-Type | Spooky Object  | Fetch by ID                   | Fetch by slug                     | Result
-:--- | :------------- | :---------------------------- | :-------------------------------- | :--------------------
-Post | `Spooky::Post` | `@spooky.find_post_by_id(id)` | `@spooky.find_post_by_slug(slug)` | `Spooky::Post` object
-Tag  | `Spooky::Tag`  | `@spooky.find_tag_by_id(id)`  | `@spooky.find_tag_by_slug(slug)`  | `Spooky::Tag` object
-User | `Spooky::User` | `@spooky.find_user_by_id(id)` | `@spooky.find_user_by_slug(slug)` | `Spooky::User` object
+Type | Spooky Object  | Fetch by ID                   | Fetch by slug
+:--- | :------------- | :---------------------------- | :--------------------------------
+Post | `Spooky::Post` | `@spooky.find_post_by_id(id)` | `@spooky.find_post_by_slug(slug)`
+Tag  | `Spooky::Tag`  | `@spooky.find_tag_by_id(id)`  | `@spooky.find_tag_by_slug(slug)`
+User | `Spooky::User` | `@spooky.find_user_by_id(id)` | `@spooky.find_user_by_slug(slug)`
 
 ## Development
 
