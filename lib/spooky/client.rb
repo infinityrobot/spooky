@@ -67,6 +67,11 @@ module Spooky
       end
     end
 
+    # Post specific collection lookup methods
+    def find_posts_with_tags(tags)
+      fetch_with_associations(:posts, filter: "tags:[#{tags}]")
+    end
+
     private
 
     def check_credentials!
