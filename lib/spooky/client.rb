@@ -1,5 +1,6 @@
 require "httparty"
 require "active_support/core_ext/string"
+require "active_support/core_ext/hash/except"
 
 module Spooky
   class Client
@@ -19,8 +20,9 @@ module Spooky
       url = @endpoint.dup
       url << "#{resource}/"
       if options
-        option_params = options.map { |k, v| "&#{k}=#{v}" }.join
-        url << (options[:id] ? "#{options[:id]}?" : "?#{option_params}")
+        clean_options = options[:id] ? options.except(:id) : options
+        clean_option_params = clean_options.map { |k, v| "#{k}=#{v}" }.join("&")
+        url << "#{options[:id]}?#{clean_option_params}"
       end
       url << "&client_id=#{@client_id}&client_secret=#{@client_secret}"
       HTTParty.get(url).parsed_response
