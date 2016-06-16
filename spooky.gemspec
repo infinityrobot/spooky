@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A simple Ruby wrapper for the Ghost blog public API."
   spec.description   = "Access the Ghost blog public API via Ruby."
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/infinityrobot/spooky"
   spec.license       = "MIT"
 
   file_match = %r{^(test|spec|features)/}
