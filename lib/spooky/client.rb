@@ -73,6 +73,10 @@ module Spooky
       fetch_with_associations(:posts, filter: "tags:[#{tags}]")
     end
 
+    def find_posts_by_author_slug(author_slug)
+      fetch_with_associations(:posts, filter: "author:[#{author_slug}]")
+    end
+
     private
 
     def check_credentials!
