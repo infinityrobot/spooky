@@ -17,6 +17,13 @@ module Spooky
       super(attrs)
     end
 
+    # Instance methods.
+    def display_title
+      meta_title ? meta_title : title
+    end
+
+    private
+
     def publish_attrs(attrs)
       @published_at = DateTime.iso8601(attrs["published_at"])
       @published_by = attrs["published_by"]
