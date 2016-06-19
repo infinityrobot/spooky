@@ -19,7 +19,7 @@ module Spooky
 
     # Instance methods.
     def display_title
-      meta_title ? meta_title : title
+      !meta_title.blank? ? meta_title : title
     end
 
     private
