@@ -4,13 +4,14 @@ require "active_support/core_ext/hash/except"
 
 module Spooky
   class Client
-    attr_accessor :subdomain, :client_id, :client_secret, :endpoint
+    attr_accessor :subdomain, :client_id, :client_secret, :blog_url, :endpoint
 
     def initialize(attrs = {})
       @subdomain = ENV["GHOST_SUBDOMAIN"] || attrs[:subdomain]
       @client_id = ENV["GHOST_CLIENT_ID"] || attrs[:client_id]
       @client_secret = ENV["GHOST_CLIENT_SECRET"] || attrs[:client_secret]
-      @endpoint = "https://#{subdomain}.ghost.io/ghost/api/v0.1/"
+      @blog_url = "https://#{subdomain}.ghost.io"
+      @endpoint = "#{@blog_url}/ghost/api/v0.1/"
 
       check_credentials!
     end
@@ -67,7 +68,7 @@ module Spooky
       end
     end
 
-    # Post specific collection lookup methods
+    # Post specific collection lookup methods.
     def find_posts_with_tags(tags)
       fetch_with_associations(:posts, filter: "tags:[#{tags}]")
     end
