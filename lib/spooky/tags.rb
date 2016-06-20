@@ -1,6 +1,6 @@
 module Spooky
   class Tag < Spooky::Base
-    attr_reader :name, :description, :image, :hidden, :parent
+    attr_reader :name, :description, :image, :hidden, :parent, :post_count
 
     def initialize(attrs = {})
       @name = attrs["name"]
@@ -8,6 +8,7 @@ module Spooky
       @image = attrs["image"]
       @hidden = attrs["hidden"]
       @parent = attrs["parent"]
+      @post_count = attrs.dig("count", "posts")
 
       super(attrs)
     end
